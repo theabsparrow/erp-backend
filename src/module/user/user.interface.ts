@@ -1,4 +1,16 @@
-import type { USER_ROLE } from "./user.const.js";
+import type { Types } from "mongoose";
 
+export type TUserStatus = "active" | "block";
 
-export type TUSerRole = keyof typeof USER_ROLE;
+export type TUser = {
+  name: string;
+  email: string;
+  phone: string;
+  password: string;
+  role: Types.ObjectId;
+  profilePicture?: string;
+  status: TUserStatus;
+  isDeleted: boolean;
+  createdAt?: Date;
+  updatedAt?: Date;
+};

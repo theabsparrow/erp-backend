@@ -1,0 +1,87 @@
+[
+  {
+    "name": "Create Role",
+    "description": "Allows creating a new role",
+    "key": "create_role"
+  },
+  {
+    "name": "Update Role",
+    "description": "Allows updating an existing role",
+    "key": "update_role"
+  },
+  {
+    "name": "Delete Role",
+    "description": "Allows deleting a role",
+    "key": "delete_role"
+  },
+  {
+    "name": "View Role",
+    "description": "Allows viewing roles",
+    "key": "view_role"
+  },
+  {
+    "name": "Create User",
+    "description": "Allows creating a new user",
+    "key": "create_user"
+  },
+  {
+    "name": "View User",
+    "description": "Allows viewing users",
+    "key": "view_user"
+  },
+  {
+    "name": "Update User",
+    "description": "Allows updating an existing user",
+    "key": "update_user"
+  },
+  {
+    "name": "Delete User",
+    "description": "Allows deleting a user",
+    "key": "delete_user"
+  },
+  {
+    "name": "Create Product",
+    "description": "Allows creating a product",
+    "key": "create_product"
+  },
+  {
+    "name": "Update Product",
+    "description": "Allows updating a product",
+    "key": "update_product"
+  },
+  {
+    "name": "View Product",
+    "description": "Allows viewing a product",
+    "key": "view_product"
+  },
+  {
+    "name": "Delete Product",
+    "description": "Allows deleting a product",
+    "key": "delete_product"
+  },
+  {
+    "name": "Create Sale",
+    "description": "Allows creating a sale",
+    "key": "create_sale"
+  },
+  {
+    "name": "View Sale",
+    "description": "Allows viewing sales",
+    "key": "view_sale"
+  },
+  {
+    "name": "Update Sale",
+    "description": "Allows updating a sale",
+    "key": "update_sale"
+  },
+  {
+    "name": "Delete Sale",
+    "description": "Allows deleting a sale",
+    "key": "delete_sale"
+  },
+  {
+    "name": "change password",
+    "description": "allow change passowrd",
+    "key": "auth_change_password"
+  }
+]

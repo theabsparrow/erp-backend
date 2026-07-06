@@ -1,0 +1,29 @@
+export const PERMISSIONS = {
+  CREATE_ROLE: "create_role",
+  UPDATE_ROLE: "update_role",
+  DELETE_ROLE: "delete_role",
+  VIEW_ROLE: "view_role",
+  CREATE_USER: "create_user",
+  VIEW_USER: "view_user",
+  UPDATE_USER: "update_user",
+  DELETE_USER: "delete_user",
+  CREATE_PRODUCT: "create_product",
+  UPDATE_PRODUCT: "update_product",
+  VIEW_PRODUCT: "view_product",
+  DELETE_PRODUCT: "delete_product",
+  CREATE_SALE: "create_sale",
+  VIEW_SALE: "view_sale",
+  UPDATE_SALE: "update_sale",
+  DELETE_SALE: "delete_sale",
+   AUTH_CHANGE_PASSWORD: "auth_change_password",
+} as const;
+
+export type TPermissionKey = (typeof PERMISSIONS)[keyof typeof PERMISSIONS];
+
+export const ROLES = {
+  ADMIN: "Admin",
+  MANAGER: "Manager",
+  EMPLOYEE: "Employee",
+} as const;
+
+export type TRoleName = (typeof ROLES)[keyof typeof ROLES];

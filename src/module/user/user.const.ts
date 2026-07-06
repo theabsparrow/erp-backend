@@ -1,5 +1,1 @@
-export const USER_ROLE = {
-  admin: "admin",
-  user: "user",
-  superAdmin: "superAdmin",
-} as const;
+export const PROTECTED_USERS = ["admin@erp.com"] as const;
