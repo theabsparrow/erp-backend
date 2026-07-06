@@ -46,7 +46,8 @@ const getUserById = catchAsync(
 const updateUser = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
     const id = req.params.id as string;
-    const result = await userService.updateUser(id, req.body);
+    const payload = req.file ? { ...req.body, profilePicture: req.file.path } : req.body;
+    const result = await userService.updateUser(id, payload);
     sendResponse(res, {
       statusCode: StatusCodes.OK,
       success: true,
@@ -77,7 +78,8 @@ const getMe = catchAsync(async (req: Request, res: Response, next: NextFunction)
 
 const updateMe = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
   const { userId } = req.user as JwtPayload;
-  const result = await userService.updateMe(userId, req.body);
+  const payload = req.file ? { ...req.body, profilePicture: req.file.path } : req.body;
+  const result = await userService.updateMe(userId, payload);
   sendResponse(res, { statusCode: StatusCodes.OK, success: true, message: "Profile updated successfully", data: result });
 });
 

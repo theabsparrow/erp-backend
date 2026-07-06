@@ -7,7 +7,7 @@ export type TUser = {
   email: string;
   phone: string;
   password: string;
-  role: Types.ObjectId;
+  role: Types.ObjectId | null;
   profilePicture?: string;
   status: TUserStatus;
   isDeleted: boolean;

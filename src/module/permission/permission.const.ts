@@ -11,11 +11,15 @@ export const PERMISSIONS = {
   UPDATE_PRODUCT: "update_product",
   VIEW_PRODUCT: "view_product",
   DELETE_PRODUCT: "delete_product",
+  CREATE_CATEGORY: "create_category",
+  UPDATE_CATEGORY: "update_category",
+  VIEW_CATEGORY: "view_category",
+  DELETE_CATEGORY: "delete_category",
   CREATE_SALE: "create_sale",
   VIEW_SALE: "view_sale",
   UPDATE_SALE: "update_sale",
   DELETE_SALE: "delete_sale",
-   AUTH_CHANGE_PASSWORD: "auth_change_password",
+  AUTH_CHANGE_PASSWORD: "auth_change_password",
 } as const;
 
 export type TPermissionKey = (typeof PERMISSIONS)[keyof typeof PERMISSIONS];

@@ -1,8 +1,10 @@
 import { StatusCodes } from "http-status-codes";
+import mongoose from "mongoose";
 import AppError from "../../error/AppError.js";
 import type { TRole, TUpdateRolePayload } from "./role.interface.js";
 import Role from "./role.model.js";
 import { PROTECTED_ROLES } from "./role.const.js";
+import User from "../user/user.model.js";
 
 const createRole = async (payload: TRole) => {
   const exists = await Role.findOne({ name: payload.name });
@@ -53,7 +55,24 @@ const deleteRole = async (id: string) => {
   if (PROTECTED_ROLES.includes(role.name as (typeof PROTECTED_ROLES)[number])) {
     throw new AppError(StatusCodes.FORBIDDEN, "This role cannot be deleted");
   }
-  return await Role.findByIdAndUpdate(id, { isDeleted: true }, { new: true });
+
+  const session = await mongoose.startSession();
+  try {
+    session.startTransaction();
+    await User.updateMany({ role: id }, { $set: { role: null } }, { session });
+    const result = await Role.findByIdAndUpdate(
+      id,
+      { isDeleted: true },
+      { new: true, session },
+    );
+    await session.commitTransaction();
+    return result;
+  } catch (error) {
+    await session.abortTransaction();
+    throw error;
+  } finally {
+    session.endSession();
+  }
 };
 
 export const roleService = {

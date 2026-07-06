@@ -9,7 +9,7 @@ const userSchema = new Schema<TUser>(
     email: { type: String, required: true, unique: true, trim: true },
     phone: { type: String, required: true, trim: true },
     password: { type: String, required: true },
-    role: { type: Schema.Types.ObjectId, ref: "Role", required: true },
+    role: { type: Schema.Types.ObjectId, ref: "Role", default: null },
     profilePicture: { type: String },
     status: { type: String, enum: ["active", "block"], default: "active" },
     isDeleted: { type: Boolean, default: false },

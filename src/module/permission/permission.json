@@ -60,6 +60,26 @@
     "key": "delete_product"
   },
   {
+    "name": "Create Category",
+    "description": "Allows to create a category",
+    "key": "create_category"
+  },
+  {
+    "name": "Update Category",
+    "description": "Allows to update a category",
+    "key": "update_category"
+  },
+  {
+    "name": "View Category",
+    "description": "Allows to view a category",
+    "key": "view_category"
+  },
+  {
+    "name": "Delete Category",
+    "description": "Allows to delete a category",
+    "key": "delete_category"
+  },
+  {
     "name": "Create Sale",
     "description": "Allows creating a sale",
     "key": "create_sale"
