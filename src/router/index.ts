@@ -4,6 +4,7 @@ import userRouter from "../module/user/user.route.js";
 import authRouter from "../module/auth/auth.route.js";
 import productRouter from "../module/product/product.route.js";
 import categoryRouter from "../module/category/category.route.js";
+import saleRouter from "../module/sale/sale.route.js";
 
 const router: Router = Router();
 
@@ -13,6 +14,7 @@ const moduleRoutes = [
   { path: "/users", route: userRouter },
   { path: "/categories", route: categoryRouter },
   { path: "/products", route: productRouter },
+  { path: "/sales", route: saleRouter },
 ];
 
 moduleRoutes.forEach((route) => router.use(route.path, route.route));
