@@ -15,6 +15,7 @@ import { createToken, verifyToken } from "./auth.utills.js";
 
 const login = async (payload: TLoginPayload) => {
   const user = await User.findOne({ email: payload.email }).populate<{ role: TRole }>("role");
+  console.log(user);
   if (!user) throw new AppError(StatusCodes.NOT_FOUND, "User not found");
   if (!user.role) throw new AppError(StatusCodes.FORBIDDEN, "User has no assigned role");
   if (user.status === "block") throw new AppError(StatusCodes.FORBIDDEN, "User is blocked");
