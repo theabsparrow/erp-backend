@@ -58,9 +58,9 @@ const deleteProduct = async (id: string) => {
   const product = await Product.findById(id);
   if (!product) throw new AppError(StatusCodes.NOT_FOUND, "Product not found");
 
-  if (product.image) {
+  if (product?.image) {
     const publicId = product.image.split("/").slice(-2).join("/").split(".")[0];
-    await cloudinary.uploader.destroy(publicId);
+    await cloudinary.uploader.destroy(publicId!);
   }
 
   return await Product.findByIdAndUpdate(id, { isDeleted: true }, { new: true });
