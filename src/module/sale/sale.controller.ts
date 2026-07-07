@@ -20,7 +20,8 @@ const createSale = catchAsync(
 
 const getAllSales = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
-    const result = await saleService.getAllSales();
+    const { userId, roleName } = req.user as JwtPayload;
+    const result = await saleService.getAllSales(userId, roleName);
     sendResponse(res, {
       statusCode: StatusCodes.OK,
       success: true,

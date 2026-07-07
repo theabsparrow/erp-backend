@@ -73,8 +73,9 @@ const createSale = async (soldBy: string, payload: TCreateSalePayload) => {
   }
 };
 
-const getAllSales = async () => {
-  return await Sale.find().populate("soldBy", "name email");
+const getAllSales = async (userId: string, roleName: string) => {
+  const filter = roleName === "Admin" || roleName === "Manager" ? {} : { soldBy: userId };
+  return await Sale.find(filter).populate("soldBy", "name email");
 };
 
 const getSaleById = async (id: string) => {

@@ -11,7 +11,7 @@ const userRouter: Router = Router();
 
 userRouter.get(
   "/me",
-  auth(ROLES.ADMIN, ROLES.MANAGER, ROLES.EMPLOYEE),
+  auth(),
   userController.getMe,
 );
 userRouter.patch(

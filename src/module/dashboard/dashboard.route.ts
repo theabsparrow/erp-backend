@@ -7,7 +7,7 @@ const dashboardRouter:Router = Router();
 
 dashboardRouter.get(
   "/stats",
-  auth(ROLES.ADMIN, ROLES.MANAGER),
+  auth(),
   dashboardController.getStats
 );
 
