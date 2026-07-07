@@ -18,6 +18,7 @@ const userSchema = new Schema<TUser>(
 );
 
 userSchema.pre("save", async function () {
+  if (!this.isModified("password")) return;
   this.password = await bcrypt.hash(
     this.password,
     Number(config.bcrypt_salt_round)

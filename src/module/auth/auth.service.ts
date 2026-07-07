@@ -93,16 +93,15 @@ const changeOwnPassword = async (
   payload: TChangeOwnPassword,
 ) => {
   const user = await User.findById(userId);
+
   if (!user) throw new AppError(StatusCodes.NOT_FOUND, "User not found");
 
   const isMatch = await bcrypt.compare(payload.oldPassword, user.password);
+
   if (!isMatch)
     throw new AppError(StatusCodes.UNAUTHORIZED, "Old password is incorrect");
 
-  user.password = await bcrypt.hash(
-    payload.newPassword,
-    Number(config.bcrypt_salt_round),
-  );
+  user.password = payload.newPassword;
   await user.save({ validateBeforeSave: false });
 };
 
@@ -110,10 +109,7 @@ const adminChangePassword = async (payload: TAdminChangePassword) => {
   const user = await User.findById(payload.userId);
   if (!user) throw new AppError(StatusCodes.NOT_FOUND, "User not found");
 
-  user.password = await bcrypt.hash(
-    payload.newPassword,
-    Number(config.bcrypt_salt_round),
-  );
+  user.password = payload.newPassword;
   await user.save({ validateBeforeSave: false });
 };
 
