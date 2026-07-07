@@ -3,7 +3,7 @@ import type { TRole } from "./role.interface.js";
 
 const roleSchema = new Schema<TRole>(
   {
-    name: { type: String, required: true, unique: true, trim: true },
+    name: { type: String, required: true, trim: true },
     description: { type: String, trim: true },
     status: { type: String, enum: ["active", "freeze"], default: "active" },
     permissions: { type: [String], default: [] },

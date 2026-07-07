@@ -47,6 +47,7 @@ const updateUser = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
     const id = req.params.id as string;
     const payload = req.file ? { ...req.body, profilePicture: req.file.path } : req.body;
+
     const result = await userService.updateUser(id, payload);
     sendResponse(res, {
       statusCode: StatusCodes.OK,

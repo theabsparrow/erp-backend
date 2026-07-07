@@ -2,30 +2,14 @@ import mongoose from "mongoose";
 import config from "../../config/index.js";
 import Role from "./role.model.js";
 import type { TRole } from "./role.interface.js";
+import { PERMISSIONS } from "../permission/permission.const.js";
 
 const seedRoles: TRole[] = [
   {
     name: "Admin",
     description: "Has full access to all permissions",
     status: "active",
-    permissions: [
-      "create_role",
-      "update_role",
-      "delete_role",
-      "view_role",
-      "create_user",
-      "view_user",
-      "update_user",
-      "delete_user",
-      "create_product",
-      "update_product",
-      "view_product",
-      "delete_product",
-      "create_sale",
-      "view_sale",
-      "update_sale",
-      "delete_sale",
-    ],
+    permissions: Object.values(PERMISSIONS),
     isDeleted: false,
   },
   {
@@ -62,7 +46,6 @@ async function seedRoleData() {
       const exists = await Role.findOne({ name: role.name });
       if (!exists) {
         await Role.create(role);
-        console.log(`Seeded role: ${role.name}`);
       } else {
         console.log(`Role already exists: ${role.name}`);
       }

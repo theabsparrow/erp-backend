@@ -1,1 +1,1 @@
-export const PROTECTED_ROLES = ["Admin", "Manager", "Employee"] as const;
+export const PROTECTED_ROLES = ["Admin"] as const;

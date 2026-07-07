@@ -42,7 +42,6 @@ userRouter.patch(
   "/:id",
   checkPermission(PERMISSIONS.UPDATE_USER),
   upload.single("profilePicture"),
-  parseToJsonFormat,
   validateRequest(userValidation.updateUserSchema),
   userController.updateUser,
 );

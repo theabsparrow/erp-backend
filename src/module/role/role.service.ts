@@ -5,15 +5,18 @@ import type { TRole, TUpdateRolePayload } from "./role.interface.js";
 import Role from "./role.model.js";
 import { PROTECTED_ROLES } from "./role.const.js";
 import User from "../user/user.model.js";
+import permissionsData from "../permission/permission.json" with { type: "json" };
 
 const createRole = async (payload: TRole) => {
   const exists = await Role.findOne({ name: payload.name });
-  if (exists) throw new AppError(StatusCodes.CONFLICT, "Role already exists");
-  return await Role.create(payload);
+  if (exists && !exists.isDeleted) throw new AppError(StatusCodes.CONFLICT, "Role already exists");
+  const result =  await Role.create(payload);
+  return result
 };
 
 const getAllRoles = async () => {
-  return await Role.find();
+  const roles = await Role.find();
+  return { roles, permissions: permissionsData };
 };
 
 const getRoleById = async (id: string) => {
