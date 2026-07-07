@@ -21,6 +21,9 @@
   "license": "ISC",
   "type": "module",
   "packageManager": "pnpm@10.5.0",
+  "pnpm": {
+    "allowBuilds": ["bcrypt", "esbuild"]
+  },
   "dependencies": {
     "bcrypt": "^6.0.0",
     "cloudinary": "^2.10.0",

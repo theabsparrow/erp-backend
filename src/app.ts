@@ -1,12 +1,18 @@
 import express, { type Application, type Request, type Response } from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import mongoose from "mongoose";
 import router from "./router/index.js";
 import config from "./config/index.js";
 import globalErrorHandler from "./middlewire/globalErrorHandler.js";
 import notFound from "./middlewire/notFound.js";
 
-const app:Application = express();
+const app: Application = express();
+
+if (mongoose.connection.readyState === 0) {
+  mongoose.connect(config.database_url as string);
+}
+
 app.use(express.json());
 app.use(cookieParser());
 const corsOption = {
