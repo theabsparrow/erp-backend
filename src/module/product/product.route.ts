@@ -1,6 +1,5 @@
 import { Router } from "express";
 import { upload } from "../../config/cloudinary.js";
-import { parseToJsonFormat } from "../../middlewire/parseToJsonFormat.js";
 import validateRequest from "../../middlewire/validateRequest.js";
 import { checkPermission } from "../../middlewire/auth.js";
 import { PERMISSIONS } from "../permission/permission.const.js";
@@ -13,7 +12,6 @@ productRouter.post(
   "/",
   checkPermission(PERMISSIONS.CREATE_PRODUCT),
   upload.single("image"),
-  parseToJsonFormat,
   validateRequest(productValidation.createProductSchema),
   productController.createProduct
 );
@@ -34,7 +32,6 @@ productRouter.patch(
   "/:id",
   checkPermission(PERMISSIONS.UPDATE_PRODUCT),
   upload.single("image"),
-  parseToJsonFormat,
   validateRequest(productValidation.updateProductSchema),
   productController.updateProduct
 );
